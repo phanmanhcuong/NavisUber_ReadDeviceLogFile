@@ -35,16 +35,18 @@ namespace ReadDeviceLogFile
             this.label2 = new System.Windows.Forms.Label();
             this.btn_connect = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.header = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.checkbox_selectall = new System.Windows.Forms.CheckBox();
             this.checkBox_unselectall = new System.Windows.Forms.CheckBox();
             this.btn_start = new System.Windows.Forms.Button();
-            this.btn_stop = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtbox_servername = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 31);
+            this.label1.Location = new System.Drawing.Point(13, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -52,7 +54,7 @@ namespace ReadDeviceLogFile
             // 
             // txtbox_filename
             // 
-            this.txtbox_filename.Location = new System.Drawing.Point(79, 28);
+            this.txtbox_filename.Location = new System.Drawing.Point(94, 40);
             this.txtbox_filename.Name = "txtbox_filename";
             this.txtbox_filename.Size = new System.Drawing.Size(115, 20);
             this.txtbox_filename.TabIndex = 1;
@@ -61,36 +63,38 @@ namespace ReadDeviceLogFile
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(200, 31);
+            this.label2.Location = new System.Drawing.Point(215, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = ".txt";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(283, 28);
+            this.btn_connect.Location = new System.Drawing.Point(283, 38);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(178, 23);
             this.btn_connect.TabIndex = 3;
-            this.btn_connect.Text = "Connnect";
+            this.btn_connect.Text = "Load File";
             this.btn_connect.UseVisualStyleBackColor = true;
             this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
             // 
             // listView1
             // 
             this.listView1.CheckBoxes = true;
-            this.listView1.Location = new System.Drawing.Point(16, 67);
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.header});
+            this.listView1.Location = new System.Drawing.Point(16, 78);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(445, 223);
+            this.listView1.Size = new System.Drawing.Size(445, 212);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            ColumnHeader header = new ColumnHeader();
-            header.Text = "";
-            header.Width = -2;
-            this.listView1.Columns.Add(header);
+            // 
+            // header
+            // 
+            this.header.Text = "";
+            this.header.Width = 441;
             // 
             // checkbox_selectall
             // 
@@ -116,7 +120,7 @@ namespace ReadDeviceLogFile
             // 
             // btn_start
             // 
-            this.btn_start.Location = new System.Drawing.Point(16, 342);
+            this.btn_start.Location = new System.Drawing.Point(151, 345);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(205, 23);
             this.btn_start.TabIndex = 7;
@@ -124,22 +128,30 @@ namespace ReadDeviceLogFile
             this.btn_start.UseVisualStyleBackColor = true;
             this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
             // 
-            // btn_stop
+            // label3
             // 
-            this.btn_stop.Location = new System.Drawing.Point(244, 341);
-            this.btn_stop.Name = "btn_stop";
-            this.btn_stop.Size = new System.Drawing.Size(217, 23);
-            this.btn_stop.TabIndex = 8;
-            this.btn_stop.Text = "Stop";
-            this.btn_stop.UseVisualStyleBackColor = true;
-            this.btn_stop.Click += new System.EventHandler(this.btn_stop_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Server Name: ";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // txtbox_servername
+            // 
+            this.txtbox_servername.Location = new System.Drawing.Point(94, 9);
+            this.txtbox_servername.Name = "txtbox_servername";
+            this.txtbox_servername.Size = new System.Drawing.Size(114, 20);
+            this.txtbox_servername.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 393);
-            this.Controls.Add(this.btn_stop);
+            this.Controls.Add(this.txtbox_servername);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.checkBox_unselectall);
             this.Controls.Add(this.checkbox_selectall);
@@ -150,6 +162,7 @@ namespace ReadDeviceLogFile
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +178,9 @@ namespace ReadDeviceLogFile
         private System.Windows.Forms.CheckBox checkbox_selectall;
         private System.Windows.Forms.CheckBox checkBox_unselectall;
         private System.Windows.Forms.Button btn_start;
-        private System.Windows.Forms.Button btn_stop;
+        private ColumnHeader header;
+        private Label label3;
+        private TextBox txtbox_servername;
     }
 }
 
