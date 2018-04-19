@@ -63,24 +63,39 @@ namespace ReadDeviceLogFile
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-
-            //System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 5000;
-            timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true;
-
-            if (btn_start.Text == "Start")
+            if (String.IsNullOrEmpty(txtbox_foldername.Text))
             {
-                btn_start.Text = "Stop";
-
-                timer.Start();
+                MessageBox.Show("Please choose a folder !", "Thông báo lỗi");
             }
             else
             {
-                btn_start.Text = "Start";
+                checkedItems = listView1.CheckedItems;
 
-                timer.Stop();
-            }  
+                if (checkedItems.Count == 0)
+                {
+                    MessageBox.Show("Please choose file !", "Thông báo lỗi");
+                }
+                else
+                {
+                    //System.Timers.Timer timer = new System.Timers.Timer();
+                    timer.Interval = 5000;
+                    timer.Elapsed += OnTimedEvent;
+                    timer.AutoReset = true;
+
+                    if (btn_start.Text == "Start")
+                    {
+                        btn_start.Text = "Stop";
+
+                        timer.Start();
+                    }
+                    else
+                    {
+                        btn_start.Text = "Start";
+
+                        timer.Stop();
+                    }
+                }
+            }          
         }
 
         //Thread
@@ -107,14 +122,16 @@ namespace ReadDeviceLogFile
             else
             {
                 checkedItems = listView1.CheckedItems;
-
+              
                 foreach (ListViewItem item in checkedItems)
                 {
+                    //string deviceLogFilePath = "C:\\Users\\Admin\\DevicesLogFiles\\" + item.Text + ".txt";
+                    
                     string deviceLogFilePath = "C:\\Users\\Admin\\DevicesLogFiles\\" + item.Text + ".txt";
 
                     string lastLine = ReadLastLine(deviceLogFilePath, Encoding.ASCII, "\n");
 
-                    SendData(lastLine);
+                    SendData(lastLine);                    
                 }
             }
         }
@@ -183,12 +200,21 @@ namespace ReadDeviceLogFile
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_openfolder_Click(object sender, EventArgs e)
+        {
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtbox_foldername.Text = folderBrowserDialog.SelectedPath;
+            }
         }
     }
 }

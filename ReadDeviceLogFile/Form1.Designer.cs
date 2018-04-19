@@ -41,6 +41,9 @@ namespace ReadDeviceLogFile
             this.btn_start = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtbox_servername = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.txtbox_foldername = new System.Windows.Forms.TextBox();
+            this.btn_openfolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -71,9 +74,9 @@ namespace ReadDeviceLogFile
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(283, 38);
+            this.btn_connect.Location = new System.Drawing.Point(262, 38);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(178, 23);
+            this.btn_connect.Size = new System.Drawing.Size(199, 23);
             this.btn_connect.TabIndex = 3;
             this.btn_connect.Text = "Load File";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -145,11 +148,31 @@ namespace ReadDeviceLogFile
             this.txtbox_servername.Size = new System.Drawing.Size(114, 20);
             this.txtbox_servername.TabIndex = 10;
             // 
+            // txtbox_foldername
+            // 
+            this.txtbox_foldername.Enabled = false;
+            this.txtbox_foldername.Location = new System.Drawing.Point(262, 10);
+            this.txtbox_foldername.Name = "txtbox_foldername";
+            this.txtbox_foldername.Size = new System.Drawing.Size(118, 20);
+            this.txtbox_foldername.TabIndex = 11;
+            // 
+            // btn_openfolder
+            // 
+            this.btn_openfolder.Location = new System.Drawing.Point(386, 9);
+            this.btn_openfolder.Name = "btn_openfolder";
+            this.btn_openfolder.Size = new System.Drawing.Size(75, 23);
+            this.btn_openfolder.TabIndex = 12;
+            this.btn_openfolder.Text = "Open Folder";
+            this.btn_openfolder.UseVisualStyleBackColor = true;
+            this.btn_openfolder.Click += new System.EventHandler(this.btn_openfolder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 393);
+            this.Controls.Add(this.btn_openfolder);
+            this.Controls.Add(this.txtbox_foldername);
             this.Controls.Add(this.txtbox_servername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_start);
@@ -181,6 +204,9 @@ namespace ReadDeviceLogFile
         private ColumnHeader header;
         private Label label3;
         private TextBox txtbox_servername;
+        private FolderBrowserDialog folderBrowserDialog;
+        private TextBox txtbox_foldername;
+        private Button btn_openfolder;
     }
 }
 
