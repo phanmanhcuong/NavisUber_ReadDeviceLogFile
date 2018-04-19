@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace ReadDeviceLogFile
 {
@@ -214,6 +215,23 @@ namespace ReadDeviceLogFile
             if (result == DialogResult.OK)
             {
                 txtbox_foldername.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void btn_testconnection_Click(object sender, EventArgs e)
+        {
+            Uri url = new Uri(txtbox_servername.Text);
+            string host = string.Format("{0}", url.Host);
+
+            Ping ping = new Ping();
+            PingReply pingReply = ping.Send(host);
+            if(pingReply.Status == IPStatus.Success)
+            {
+                MessageBox.Show("Connect to server successfull !", "Test connection");
+            }
+            else
+            {
+                MessageBox.Show("Connect to server failed !", "Test connection");
             }
         }
     }

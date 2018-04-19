@@ -44,12 +44,14 @@ namespace ReadDeviceLogFile
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.txtbox_foldername = new System.Windows.Forms.TextBox();
             this.btn_openfolder = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_testconnection = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 43);
+            this.label1.Location = new System.Drawing.Point(13, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -57,16 +59,16 @@ namespace ReadDeviceLogFile
             // 
             // txtbox_filename
             // 
-            this.txtbox_filename.Location = new System.Drawing.Point(94, 40);
+            this.txtbox_filename.Location = new System.Drawing.Point(93, 97);
             this.txtbox_filename.Name = "txtbox_filename";
-            this.txtbox_filename.Size = new System.Drawing.Size(115, 20);
+            this.txtbox_filename.Size = new System.Drawing.Size(259, 20);
             this.txtbox_filename.TabIndex = 1;
             this.txtbox_filename.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 43);
+            this.label2.Location = new System.Drawing.Point(358, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 13);
             this.label2.TabIndex = 2;
@@ -74,9 +76,9 @@ namespace ReadDeviceLogFile
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(262, 38);
+            this.btn_connect.Location = new System.Drawing.Point(385, 95);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(199, 23);
+            this.btn_connect.Size = new System.Drawing.Size(75, 23);
             this.btn_connect.TabIndex = 3;
             this.btn_connect.Text = "Load File";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -87,7 +89,7 @@ namespace ReadDeviceLogFile
             this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.header});
-            this.listView1.Location = new System.Drawing.Point(16, 78);
+            this.listView1.Location = new System.Drawing.Point(15, 127);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(445, 212);
             this.listView1.TabIndex = 4;
@@ -102,7 +104,7 @@ namespace ReadDeviceLogFile
             // checkbox_selectall
             // 
             this.checkbox_selectall.AutoSize = true;
-            this.checkbox_selectall.Location = new System.Drawing.Point(16, 309);
+            this.checkbox_selectall.Location = new System.Drawing.Point(16, 354);
             this.checkbox_selectall.Name = "checkbox_selectall";
             this.checkbox_selectall.Size = new System.Drawing.Size(70, 17);
             this.checkbox_selectall.TabIndex = 5;
@@ -113,7 +115,7 @@ namespace ReadDeviceLogFile
             // checkBox_unselectall
             // 
             this.checkBox_unselectall.AutoSize = true;
-            this.checkBox_unselectall.Location = new System.Drawing.Point(126, 309);
+            this.checkBox_unselectall.Location = new System.Drawing.Point(126, 354);
             this.checkBox_unselectall.Name = "checkBox_unselectall";
             this.checkBox_unselectall.Size = new System.Drawing.Size(82, 17);
             this.checkBox_unselectall.TabIndex = 6;
@@ -123,7 +125,7 @@ namespace ReadDeviceLogFile
             // 
             // btn_start
             // 
-            this.btn_start.Location = new System.Drawing.Point(151, 345);
+            this.btn_start.Location = new System.Drawing.Point(126, 388);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(205, 23);
             this.btn_start.TabIndex = 7;
@@ -145,32 +147,53 @@ namespace ReadDeviceLogFile
             // 
             this.txtbox_servername.Location = new System.Drawing.Point(94, 9);
             this.txtbox_servername.Name = "txtbox_servername";
-            this.txtbox_servername.Size = new System.Drawing.Size(114, 20);
+            this.txtbox_servername.Size = new System.Drawing.Size(258, 20);
             this.txtbox_servername.TabIndex = 10;
             // 
             // txtbox_foldername
             // 
-            this.txtbox_foldername.Enabled = false;
-            this.txtbox_foldername.Location = new System.Drawing.Point(262, 10);
+            this.txtbox_foldername.Location = new System.Drawing.Point(94, 53);
             this.txtbox_foldername.Name = "txtbox_foldername";
-            this.txtbox_foldername.Size = new System.Drawing.Size(118, 20);
+            this.txtbox_foldername.ReadOnly = true;
+            this.txtbox_foldername.Size = new System.Drawing.Size(258, 20);
             this.txtbox_foldername.TabIndex = 11;
             // 
             // btn_openfolder
             // 
-            this.btn_openfolder.Location = new System.Drawing.Point(386, 9);
+            this.btn_openfolder.Location = new System.Drawing.Point(361, 52);
             this.btn_openfolder.Name = "btn_openfolder";
-            this.btn_openfolder.Size = new System.Drawing.Size(75, 23);
+            this.btn_openfolder.Size = new System.Drawing.Size(99, 23);
             this.btn_openfolder.TabIndex = 12;
             this.btn_openfolder.Text = "Open Folder";
             this.btn_openfolder.UseVisualStyleBackColor = true;
             this.btn_openfolder.Click += new System.EventHandler(this.btn_openfolder_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Folder Name: ";
+            // 
+            // btn_testconnection
+            // 
+            this.btn_testconnection.Location = new System.Drawing.Point(361, 7);
+            this.btn_testconnection.Name = "btn_testconnection";
+            this.btn_testconnection.Size = new System.Drawing.Size(99, 23);
+            this.btn_testconnection.TabIndex = 14;
+            this.btn_testconnection.Text = "Test Connection";
+            this.btn_testconnection.UseVisualStyleBackColor = true;
+            this.btn_testconnection.Click += new System.EventHandler(this.btn_testconnection_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 393);
+            this.ClientSize = new System.Drawing.Size(476, 438);
+            this.Controls.Add(this.btn_testconnection);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_openfolder);
             this.Controls.Add(this.txtbox_foldername);
             this.Controls.Add(this.txtbox_servername);
@@ -184,7 +207,7 @@ namespace ReadDeviceLogFile
             this.Controls.Add(this.txtbox_filename);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Send Device Log To Server";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,6 +230,8 @@ namespace ReadDeviceLogFile
         private FolderBrowserDialog folderBrowserDialog;
         private TextBox txtbox_foldername;
         private Button btn_openfolder;
+        private Label label4;
+        private Button btn_testconnection;
     }
 }
 
